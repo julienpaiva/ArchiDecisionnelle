@@ -33,12 +33,9 @@ pr_data = get_data_from_github('pulls')
 contributors_data = get_data_from_github('contributors')
 
 
-# Fonction pour convertir les données JSON en Parquet
+# Fonction pour convertir les données JSON en Parquet puis en PyArrow
 def json_to_parquet(data, filename):
-    # Normaliser les données JSON pour les convertir en DataFrame
     df = pd.json_normalize(data)
-
-    # Convertir en table PyArrow et écrire en fichier Parquet
     table = pa.Table.from_pandas(df)
     pq.write_table(table, filename)
     print(f'Données sauvegardées dans {filename}')
