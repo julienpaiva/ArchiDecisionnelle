@@ -5,7 +5,7 @@ import os
 # Chemin de la base de données DuckDB
 duckdb_db = 'pytorch_data.duckdb'
 
-# Dossier où les fichiers Parquet sont stockés
+# On rajoute les fichiers dans une liste pour pouvoir les importer
 parquet_files = [
     'commits.parquet',
     'issues.parquet',
