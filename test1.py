@@ -1,5 +1,7 @@
 import duckdb
 
+# Script pour checker la bdd duckdb directement
+
 # Connexion à la base de données DuckDB (le fichier sera créé s'il n'existe pas)
 conn = duckdb.connect('pytorch_data.duckdb')
 
