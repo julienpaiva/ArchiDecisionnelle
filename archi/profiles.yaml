@@ -1,6 +1,0 @@
-transform:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: ../pytorch_data.duckdb
