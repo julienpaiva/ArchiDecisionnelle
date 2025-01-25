@@ -1,0 +1,29 @@
+with clean_issue as (
+    select
+        id,
+        title,
+        "user.id",
+        created_at,
+        closed_at,
+        state,
+        "pull_request.html_url"
+    from {{ ref('cleanissue') }}
+),
+
+clean_contributors as (
+    select
+        id,
+        login
+    from {{ ref('cleancontributor') }}
+)
+
+select
+    clean_issue.id,
+    clean_issue."user.id",
+    clean_issue."state",
+    clean_issue.created_at,
+    clean_issue.closed_at,
+    clean_contributors.id as contributor_id,
+    clean_contributors.login as contributor_login
+from clean_issue
+left join clean_contributors on clean_contributors.id = clean_issue."user.id"

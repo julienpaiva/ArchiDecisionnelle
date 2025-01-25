@@ -4,14 +4,14 @@ with clean_commits as (
         "commit.author.date",
         "commit.url",
         "author.id"
-    from "pytorch_data"."main_cleansed"."cleancommit"  -- Utilisation de ref() pour se référer au modèle cleancommit.sql
+    from "pytorch_data"."main_cleansed"."cleancommit"
 ),
 
 clean_contributors as (
     select
         id,
         login
-    from "pytorch_data"."main_cleansed"."cleancontributor"  -- Utilisation de ref() pour se référer au modèle cleancontributor.sql
+    from "pytorch_data"."main_cleansed"."cleancontributor"
 )
 
 select
@@ -22,5 +22,4 @@ select
     clean_contributors.id as contributor_id,
     clean_contributors.login as contributor_login
 from clean_commits
-left join clean_contributors
-    on clean_contributors.id = clean_commits."author.id"
+left join clean_contributors on clean_contributors.id = clean_commits."author.id"

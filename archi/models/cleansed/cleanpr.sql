@@ -4,9 +4,8 @@ with raw as (
         state,
         title,
         created_at,
-        -- Ajoutez d'autres colonnes nécessaires
     from {{ ('raw_pull_requests') }}
-    where id is not null  -- Filtrer les PR sans titre
+    where id is not null
 )
 
 select

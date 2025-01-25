@@ -5,15 +5,18 @@ with raw as (
         "user.id",
         created_at,
         closed_at,
-        "pull_request.html_url"
-        -- Ajoutez d'autres colonnes nécessaires
+        "pull_request.html_url",
+        state
     from {{ ('raw_issues') }}
-    where id is not null  -- Filtrer les issues sans titre
+    where id is not null
 )
 
 select
     id,
     title,
     "user.id",
-    created_at
+    created_at,
+    closed_at,
+    "pull_request.html_url",
+    state
 from raw

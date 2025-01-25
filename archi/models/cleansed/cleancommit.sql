@@ -4,9 +4,8 @@ with raw as (
         "commit.author.date",
         "commit.url",
         "author.id",
-        -- Ajoutez d'autres colonnes nécessaires
     from {{ ('raw_commits') }}
-    where "author.id" is not null  -- Filtrer les commits sans message
+    where "author.id" is not null
 )
 
 select

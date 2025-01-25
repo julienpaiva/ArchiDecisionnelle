@@ -2,9 +2,8 @@ with raw as (
     select
         id,
         login,
-        -- Ajoutez d'autres colonnes nécessaires
     from {{ ('raw_contributors') }}
-    where id is not null  -- Filtrer les contributeurs sans email
+    where id is not null
 )
 
 select
