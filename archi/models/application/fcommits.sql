@@ -1,23 +1,25 @@
-with raw_contributors as (
-    select
-        id,
-        login
-    from main.raw_contributors
-),
-
-raw_commits as (
+with clean_commits as (
     select
         "commit.author.name",
         "commit.author.date",
         "commit.url",
         "author.id"
-    from main.raw_commits
+    from {{ ref('cleancommit') }}
+),
+
+clean_contributors as (
+    select
+        id,
+        login
+    from {{ ref('cleancontributor') }}
 )
 
 select
-    raw_commits."author.id",
-    raw_commits."commit.url",
-    raw_contributors.id,
-from raw_commits
-left join raw_contributors
-    on raw_contributors.id = raw_commits."author.id"
+    clean_commits."author.id",
+    clean_commits."commit.url",
+    clean_commits."commit.author.name",
+    clean_commits."commit.author.date",
+    clean_contributors.id as contributor_id,
+    clean_contributors.login as contributor_login
+from clean_commits
+left join clean_contributors on clean_contributors.id = clean_commits."author.id"
