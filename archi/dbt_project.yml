@@ -39,3 +39,4 @@ models:
       +schema: cleansed
     application:
       +materialized: view
+      +schema: application

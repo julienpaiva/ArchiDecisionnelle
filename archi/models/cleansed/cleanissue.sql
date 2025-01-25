@@ -3,7 +3,9 @@ with raw as (
         id,
         title,
         "user.id",
-        created_at
+        created_at,
+        closed_at,
+        "pull_request.html_url"
         -- Ajoutez d'autres colonnes nécessaires
     from {{ ('raw_issues') }}
     where id is not null  -- Filtrer les issues sans titre

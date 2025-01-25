@@ -1,0 +1,5 @@
+sources:
+  - name: raw_commits
+  - name: raw_issues
+  - name: raw_contributors
+  - name: raw_pull_requests
